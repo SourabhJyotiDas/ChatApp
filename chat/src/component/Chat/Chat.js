@@ -8,10 +8,9 @@ import ReactScrollToBottom from "react-scroll-to-bottom";
 import closeIcon from "../../images/closeIcon.png";
 import { toast } from 'react-toastify';
 
-
 let socket;
 
-const ENDPOINT = "https://reactchatapp-backend.vercel.app";
+const ENDPOINT = "http://localhost:4000";
 
 const Chat = () => {
 

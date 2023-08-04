@@ -1,19 +1,19 @@
-const http = require("http");
-const express = require("express");
-const cors = require("cors");
-const socketIO = require("socket.io");
+import express from "express";
+import cors from "cors";
+import { createServer } from "http";
+import { Server as SocketIO } from "socket.io";
 
 const app = express();
-const port = 4000 || process.env.PORT;
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.get("/", (req, res) => {
     res.send("WORKING");
-})
+});
 
-const server = http.createServer(app);
+const server = createServer(app);
 
-const io = socketIO(server);
+const io = new SocketIO(server);
 
 const users = [{}];
 

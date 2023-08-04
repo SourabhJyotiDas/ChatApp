@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 let socket;
 
-const ENDPOINT = "http://localhost:4000";
+const ENDPOINT = "https://reactchatapp-backend.vercel.app";
 
 const Chat = () => {
 

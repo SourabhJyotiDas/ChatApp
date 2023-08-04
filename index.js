@@ -1,19 +1,36 @@
-import express from "express";
-import cors from "cors";
-import { createServer } from "http";
-import { Server as SocketIO } from "socket.io";
+
+const http = require("http");
+const express = require("express");
+const cors = require("cors");
+const socketIO = require("socket.io");
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000 || process.env.PORT;
 
 app.use(cors());
 app.get("/", (req, res) => {
     res.send("WORKING");
+})
+
+const server = http.createServer(app);
+
+const io = socketIO(server); 
+app.get("/", (req, res) => {
+    res.send("WORKING");
 });
 
-const server = createServer(app);
+// 
 
-const io = new SocketIO(server);
+// import path from "path";
+// const __dirname = path.resolve();
+
+// app.use(express.static(path.join(__dirname, "./client/build")))    // deploy only
+
+// app.get('/', async (req, res) => {
+//    res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
+
+// 
 
 const users = [{}];
 
@@ -38,6 +55,9 @@ io.on("connection", (socket) => {
     })
 
 });
+
+
+
 
 server.listen(port, () => {
     console.log(`server is working on http://localhost:${port}`);
